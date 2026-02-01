@@ -1,0 +1,99 @@
+<?php
+
+namespace App\Domain\Store\Models;
+
+use App\Domain\User\Models\User;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
+use Str;
+
+class Store extends Model
+{
+    /** @use HasFactory<\Database\Factories\StoreFactory> */
+    use HasFactory, Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $guard_name = 'web'; // <-- matches your role
+
+    protected $table = 'stores';
+
+    protected $keyType = 'string';
+
+    public $incrementing = false;
+
+    protected $fillable = [
+        'owner_user_id',
+        'name',
+        'description',
+        'logo_url',
+        'banner_url',
+        'email',
+        'phone',
+        'tax_id',
+        'commission_rate',
+        'status',
+        'subscription_tier',
+        'is_verified',
+        'verified_at',
+        'total_sales',
+        'rating_avg',
+        'rating_count',
+        'shard_key',
+    ];
+
+    /**
+     * Get the attributes that should be cast.
+     *
+     * @return array<string, string>
+     */
+    protected function casts(): array
+    {
+        return [
+            'commission_rate' => 'decimal:4',
+            'total_sales' => 'decimal:2',
+            'rating_avg' => 'decimal:2',
+            'rating_count' => 'integer',
+            'is_verified' => 'boolean',
+            'verified_at' => 'datetime',
+            'created_at' => 'datetime',
+            'updated_at' => 'datetime',
+            'deleted_at' => 'datetime',
+        ];
+    }
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function ($store) {
+            // Generate UUID if not set
+            if (empty($store->id)) {
+                $store->id = (string) \Illuminate\Support\Str::uuid();
+            }
+
+            //  // Generate shard key for partitioning
+            // if (empty($user->shard_key)) {
+            //     $store->shard_key = substr(md5($store->email), 0, 8);
+            // }
+        });
+    }
+
+    public function owner()
+    {
+        return $this->belongsTo(
+            User::class,
+            'owner_user_id'
+        );
+    }
+
+    public function verifications()
+    {
+        return $this->hasMany(StoreVerification::class, 'store_id');
+    }
+
+}

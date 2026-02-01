@@ -1,0 +1,43 @@
+<?php
+
+namespace App\Application\Http\Controllers\Api\V1;
+
+use App\Application\Http\Controllers\Controller;
+use App\Application\Http\Requests\createStoreRequest;
+use App\Application\Http\Resources\NotificationResource;
+use App\Domain\Notification\Models\Notification;
+use App\Domain\Store\DTOs\StoreData;
+use App\Domain\Store\Services\StoreService;
+use App\Domain\Store\Actions\CreateStore;
+use App\Domain\User\Models\User;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\Request;
+
+class StoreController extends Controller
+{
+    public function __construct(
+        private StoreService $storeService,
+        private CreateStore $createStore,
+    ) {
+    }
+    public function create(createStoreRequest $request): JsonResponse
+    {
+        try {
+            $store = $this->createStore->execute(
+                StoreData::fromRequest($request)
+            );
+
+            return response()->json([
+                'message' => 'Store created successfully',
+                'data' => [
+                    'store' => $store->load('verifications'),
+                ],
+            ], 201);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to create store',
+                'error' => $e->getMessage(),
+            ], 500);
+        }
+    }
+}
