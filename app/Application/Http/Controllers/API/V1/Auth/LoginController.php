@@ -112,7 +112,8 @@ class LoginController extends Controller
 
     public function me(Request $request): JsonResponse
     {
-        $user = $request->user()->load(['profile', 'preferences', 'points']);
+        // $user = $request->user()->load(['profile', 'preferences', 'points']);
+        $user = $request->user()->load(['profile']);
 
         return response()->json([
             'data' => new UserResource($user),

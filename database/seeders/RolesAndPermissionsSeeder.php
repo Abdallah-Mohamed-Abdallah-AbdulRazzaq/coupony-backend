@@ -20,12 +20,10 @@ class RolesAndPermissionsSeeder extends Seeder
             Role::firstOrCreate(['name' => $role, 'guard_name' => 'sanctum']);
         }
 
+        User::create([
+            'email' => 'admin@example.com',
+            'password_hash' => bcrypt('password'),
+        ]);
 
-
-        // Optionally assign a role to a default user
-        $user = User::where('email', 'admin@example.com')->first();
-        if ($user && !$user->hasRole('admin')) {
-            $user->assignRole('admin');
-        }
     }
 }

@@ -19,20 +19,21 @@ Route::prefix('v1')->group(function () {
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/auth/logout', [LoginController::class, 'logout']);
+        Route::get('auth/me', [LoginController::class, 'me']);
     });
 
     // Notifications
-    Route::get('/notifications', [NotificationController::class, 'index']);
-    Route::get('/notifications/unread', [NotificationController::class, 'unread']);
-    Route::get('/notifications/unread-count', [NotificationController::class, 'unreadCount']);
-    Route::get('/notifications/{notification}', [NotificationController::class, 'show']);
+    // Route::get('/notifications', [NotificationController::class, 'index']);
+    // Route::get('/notifications/unread', [NotificationController::class, 'unread']);
+    // Route::get('/notifications/unread-count', [NotificationController::class, 'unreadCount']);
+    // Route::get('/notifications/{notification}', [NotificationController::class, 'show']);
 
-    Route::post('/notifications/{notification}/read', [NotificationController::class, 'markAsRead']);
-    Route::post('/notifications/{notification}/unread', [NotificationController::class, 'markAsUnread']);
-    Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead']);
+    // Route::post('/notifications/{notification}/read', [NotificationController::class, 'markAsRead']);
+    // Route::post('/notifications/{notification}/unread', [NotificationController::class, 'markAsUnread']);
+    // Route::post('/notifications/mark-all-read', [NotificationController::class, 'markAllAsRead']);
 
-    Route::delete('/notifications/{notification}', [NotificationController::class, 'destroy']);
-    Route::delete('/notifications/delete-all-read', [NotificationController::class, 'deleteAllRead']);
+    // Route::delete('/notifications/{notification}', [NotificationController::class, 'destroy']);
+    // Route::delete('/notifications/delete-all-read', [NotificationController::class, 'deleteAllRead']);
 
     // OTP Management (Public)
     Route::post('/otp/send', [OtpController::class, 'send']);

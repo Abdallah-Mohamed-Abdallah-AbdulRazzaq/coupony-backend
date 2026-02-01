@@ -54,7 +54,6 @@ return new class extends Migration {
 
             // Indexes
             $table->index('owner_user_id', 'idx_owner');
-            $table->index('slug', 'idx_slug');
             // $table->index('status', 'idx_status');
             $table->index('subscription_tier', 'idx_subscription');
 

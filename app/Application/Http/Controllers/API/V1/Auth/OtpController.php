@@ -57,7 +57,7 @@ class OtpController extends Controller
                 'message' => 'OTP sent successfully.',
                 'data' => [
                     'expires_at' => $otp->expires_at->toIso8601String(),
-                    'expires_in_minutes' => $otp->expires_at->diffInMinutes(now()),
+                    'expires_in_minutes' => now()->diffInMinutes($otp->expires_at, false),
                     'channel' => $channel,
                     'masked_recipient' => $this->otpService->maskRecipient($otp->phone_or_email, $channel),
                 ],
