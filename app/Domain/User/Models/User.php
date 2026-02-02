@@ -99,7 +99,7 @@ class User extends Authenticatable
 
             // Set default language and timezone
             $user->language = $user->language ?? 'ar';
-            $user->timezone = $user->timezone ?? 'UTC';
+            $user->timezone = $user->timezone ?? 'Africa/Cairo';
             $user->status = $user->status ?? 'active';
         });
     }

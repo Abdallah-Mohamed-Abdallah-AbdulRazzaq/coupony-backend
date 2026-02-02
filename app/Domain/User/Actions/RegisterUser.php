@@ -41,12 +41,7 @@ class RegisterUser
                     // 'avatar_url' => $data->avatarUrl,
                 ]);
             }
-
-            if ($data->role === "seller") {
-                $user->assignRole('seller');
-            } else {
-                $user->assignRole('customer');
-            }
+            $user->assignRole('customer');
 
             // $user->points->create(["points" => 0]);
 

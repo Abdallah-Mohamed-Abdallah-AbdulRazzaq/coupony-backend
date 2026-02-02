@@ -33,13 +33,6 @@ class LoginController extends Controller
             );
             $role = $request->input('role');
             if ($role === 'seller') {
-                // $user = User::where('id', $result['user']['id'])->first();
-
-                // if ($request->input('role') && !$user->hasRole($request->input('role'))) {
-                //     return response()->json([
-                //         'message' => 'Unauthorized for the specified role.',
-                //     ], 403);
-                // }
                 $is_store_owner = $result['user']->stores()->exists();
                 return response()->json([
                     'message' => 'Login successful',
@@ -113,7 +106,7 @@ class LoginController extends Controller
     public function me(Request $request): JsonResponse
     {
         // $user = $request->user()->load(['profile', 'preferences', 'points']);
-        $user = $request->user()->load(['profile']);
+        $user = $request->user();
 
         return response()->json([
             'data' => new UserResource($user),

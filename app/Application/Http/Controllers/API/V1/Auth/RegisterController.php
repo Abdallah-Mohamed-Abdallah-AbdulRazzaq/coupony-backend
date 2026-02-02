@@ -34,35 +34,6 @@ class RegisterController extends Controller
             'device_name' => $request->input('device_name'),
             // 'referral_code' => $request->input('referral_code'),
         ];
-
-
-
-        //         return response()->json([
-        //             'message' => 'Seller upgrade request submitted. Verification pending.',
-        //             'data' => [
-        //                 'user' => new UserResource($existing->load('profile')),
-        //                 'next' => [
-        //                     'url' => route('store.create'),   // API endpoint to call
-        //                     'method' => 'POST',               // HTTP method
-        //                     'fields' => [
-        //                         'name' => 'string',
-        //                         'description' => 'string',
-        //                         'subscription_tier' => 'free|basic|premium|enterprise',
-        //                         'phone' => 'string',
-        //                         'tax_id' => 'string',
-        //                         'logo' => 'file',
-        //                         'banner' => 'file',
-        //                         'verification_docs' => [
-        //                             'commercial_register' => 'file',
-        //                             'tax_card' => 'file',
-        //                             'id_card' => 'file',
-        //                         ]
-        //                     ]
-        //                 ],
-        //             ],
-        //         ], 200);
-        //     }
-        // }
         $user = $this->registerUser->excute(
             UserData::fromRequest($request),
             context: $context

@@ -167,6 +167,10 @@ return [
      */
 
     'enable_wildcard_permission' => false,
+    //  ------------------------------------------
+    'defaults' => [
+        'guard' => 'sanctum',
+    ],
 
     /*
      * The class to use for interpreting wildcard permissions.

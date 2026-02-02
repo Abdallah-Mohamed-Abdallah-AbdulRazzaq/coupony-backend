@@ -20,11 +20,14 @@ class UserResource extends JsonResource
             'status' => $this->status,
             'language' => $this->language,
             'full_name' => $this->full_name,
+            'phone_number' => $this->phone_number,
             'profile' => $this->whenLoaded('profile', [
                 'first_name' => $this->profile?->first_name,
                 'last_name' => $this->profile?->last_name,
-                'phone' => $this->profile?->phone,
-                'avatar' => $this->profile?->avatar,
+                'avatar' => $this->profile?->avatar_url,
+                'date_of_birth' => $this->profile?->date_of_birth?->toDateString(),
+                'bio' => $this->profile?->bio,
+                'gender' => $this->profile?->gender
             ]),
 
             'points' => $this->whenLoaded('points', [

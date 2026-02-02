@@ -24,6 +24,25 @@ class Profile extends Model
         'date_of_birth' => 'date',
     ];
 
+    protected static function booted()
+    {
+        static::creating(function (Profile $profile) {
+            // Ensure that first and last names are capitalized
+            $profile->first_name = ucfirst(strtolower($profile->first_name));
+            $profile->last_name = ucfirst(strtolower($profile->last_name));
+
+            // Ensure that gender is either 'male' or 'female'
+            $profile->gender = in_array(strtolower($profile->gender), ['male', 'female']) ? strtolower($profile->gender) : 'male';
+
+            // Ensure that date of birth is a valid date
+            if ($profile->date_of_birth && !checkdate($profile->date_of_birth->month, $profile->date_of_birth->day, $profile->date_of_birth->year)) {
+                $profile->date_of_birth = null;
+            }
+
+            // Ensure that avatar URL is a valid URL
+            $profile->avatar_url ??= config('app.url') . '/users/avatars/default.svg';
+        });
+    }
     /**
      * Get the user that owns the profile.
      */

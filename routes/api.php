@@ -19,7 +19,7 @@ Route::prefix('v1')->group(function () {
 
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('/auth/logout', [LoginController::class, 'logout']);
-        Route::get('auth/me', [LoginController::class, 'me']);
+        Route::get('/auth/me', [LoginController::class, 'me']);
     });
 
     // Notifications
@@ -50,7 +50,7 @@ Route::prefix('v1')->group(function () {
     // });
 
     // Store Management
-    Route::middleware(['auth:sanctum', SellerRoleCheck::class])->group(function () {
+    Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/store/create', [StoreController::class, 'create'])->name('store.create');
     });
 });

@@ -5,6 +5,7 @@ namespace App\Domain\Store\Models;
 use App\Domain\User\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
 use Str;
 
@@ -96,4 +97,24 @@ class Store extends Model
         return $this->hasMany(StoreVerification::class, 'store_id');
     }
 
+    /**
+     * Get all users who have access to this store (staff/managers).
+     */
+    public function users(): BelongsToMany
+    {
+        return $this->belongsToMany(User::class, 'user_roles')
+            ->withPivot('role_id', 'granted_at', 'granted_by_user_id', 'expires_at')
+            ->withTimestamps();
+    }
+
+    /**
+     * Get store staff members.
+     */
+    public function staff(): BelongsToMany
+    {
+        return $this->users()
+            ->whereHas('roles', function ($query) {
+                $query->whereIn('name', ['store_manager', 'store_staff']);
+            });
+    }
 }
