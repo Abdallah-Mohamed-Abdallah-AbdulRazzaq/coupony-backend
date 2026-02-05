@@ -9,6 +9,8 @@ use App\Application\Http\Controllers\Api\V1\NotificationController;
 use App\Application\Http\Controllers\Api\V1\StoreController;
 use App\Domain\Notification\Models\Notification;
 use App\Domain\User\Models\User;
+use App\Application\Http\Controllers\Api\V1\NotifyMeController;
+use App\Http\Middleware\ContactUsThrottle;
 use App\Http\Middleware\SellerRoleCheck;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -74,6 +76,9 @@ Route::prefix('v1')->group(function () {
     });
 
     //Web Contact Us
-    Route::post('/contact-us/seller', [ContactUsController::class, 'submit_seller'])->middleware('throttle:contact-us-seller');
-    Route::post('/contact-us/customer', [ContactUsController::class, 'submit_customer'])->middleware('throttle:contact-us-customer');
+    Route::post('/contact-us/seller', [ContactUsController::class, 'submit_seller'])->name('contactUs.seller')->middleware([ContactUsThrottle::class]);
+    Route::post('/contact-us/customer', [ContactUsController::class, 'submit_customer'])->name('contactUs.customer')->middleware([ContactUsThrottle::class]);
+
+    Route::post('/notify-me/submit', [NotifyMeController::class, 'submit'])->name('notifyMe.submit')->middleware([ContactUsThrottle::class]);
+    Route::post('/notify-me/notify-all', [NotifyMeController::class, 'notifyAll'])->name('notifyMe.notifyAll');
 });

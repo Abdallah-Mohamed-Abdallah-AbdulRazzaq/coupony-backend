@@ -4,10 +4,14 @@ namespace App\Domain\Notification\Services;
 
 use App\Domain\Notification\Contracts\NotifierInterface;
 use App\Domain\Notification\Events\NotificationSent;
+use App\Domain\Notification\Mail\notifyMe;
 use App\Domain\Notification\Models\Notification;
 use App\Domain\User\Models\User;
+use DB;
+use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Log;
+use Mail;
 
 class NotificationService
 {
@@ -183,5 +187,12 @@ class NotificationService
     private function getNotifier(string $channel): ?NotifierInterface
     {
         return $this->notifiers[$channel] ?? null;
+    }
+
+    public function notifyAll(array $data)
+    {
+        $emails = DB::table('notify_me')->pluck('email');
+
+        Mail::to($emails)->send(new notifyMe($data['subject'], $data['message']));
     }
 }

@@ -25,14 +25,12 @@ class ContactUsController
             array_merge($validatedData, ['created_at' => now(), 'updated_at' => now()]),
         ]);
 
-        RateLimiter::hit($key, 60); // 60 seconds window
-
         return response()->json([
             'message' => 'Your message has been sent successfully.',
             'data' => [
                 'ip_address' => $ip,
-                'attempts' => $attempts + 1,
-                'remaining_attempts' => max(0, 3 - $attempts - 1),
+                'attempts' => $attempts,
+                'remaining_attempts' => max(0, 3 - $attempts),
             ]
         ], 200);
     }
@@ -52,14 +50,12 @@ class ContactUsController
             array_merge($validatedData, ['created_at' => now(), 'updated_at' => now()]),
         ]);
 
-        RateLimiter::hit($key, 60); // 60 seconds window
-
         return response()->json([
             'message' => 'Your message has been sent successfully.',
             'data' => [
                 'ip_address' => $ip,
-                'attempts' => $attempts + 1,
-                'remaining_attempts' => max(0, 3 - $attempts - 1),
+                'attempts' => $attempts,
+                'remaining_attempts' => max(0, 3 - $attempts),
             ]
         ], 200);
     }
