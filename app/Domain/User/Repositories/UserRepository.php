@@ -34,7 +34,12 @@ class UserRepository implements UserRepositoryInterface
 
     public function delete(string $id): bool
     {
-        //
+        return DB::transaction(function () use ($id) {
+            $user = User::findOrFail($id);
+            $deleted = $user->delete();
+            Cache::forget("user.by_id.{$id}");
+            return $deleted;
+        });
     }
 
     public function find(string $id): ?User

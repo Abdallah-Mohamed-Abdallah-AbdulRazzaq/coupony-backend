@@ -40,19 +40,19 @@ class NotificationEmail extends Mailable
         );
     }
 
-    private function getActionUrl(): ?string
-    {
-        if (!$this->notification->reference_type || !$this->notification->reference_id) {
-            return null;
-        }
+    // private function getActionUrl(): ?string
+    // {
+    //     if (!$this->notification->reference_type || !$this->notification->reference_id) {
+    //         return null;
+    //     }
 
-        return match ($this->notification->reference_type) {
-            'Order' => route('orders.show', $this->notification->reference_id),
-            'Product' => route('products.show', $this->notification->reference_id),
-            'Store' => route('stores.show', $this->notification->reference_id),
-            default => null,
-        };
-    }
+    //     return match ($this->notification->reference_type) {
+    //         'Order' => route('orders.show', $this->notification->reference_id),
+    //         'Product' => route('products.show', $this->notification->reference_id),
+    //         'Store' => route('stores.show', $this->notification->reference_id),
+    //         default => null,
+    //     };
+    // }
 
     private function getActionText(): string
     {

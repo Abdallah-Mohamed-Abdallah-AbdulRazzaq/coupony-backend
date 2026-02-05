@@ -6,7 +6,6 @@ use App\Domain\Store\Events\StaffAssignedToStore;
 use App\Domain\Store\Models\Store;
 use App\Domain\User\Models\User;
 use DateTime;
-use DB;
 use Spatie\Permission\Models\Role;
 
 class AssignStaffToStore

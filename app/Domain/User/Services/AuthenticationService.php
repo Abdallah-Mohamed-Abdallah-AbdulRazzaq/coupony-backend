@@ -5,15 +5,12 @@ namespace App\Domain\User\Services;
 use App\Application\Http\Resources\UserResource;
 use App\Domain\User\Enums\OtpChannels;
 use App\Domain\User\Enums\OtpPurposes;
-use App\Domain\User\Enums\UserStatus;
 use App\Domain\User\Events\UserLoggedIn;
 use App\Domain\User\Events\UserLoggedOut;
 use App\Domain\User\Models\User;
-use Auth;
 use Illuminate\Contracts\Hashing\Hasher;
 use Illuminate\Validation\ValidationException;
 use Laravel\Sanctum\NewAccessToken;
-use Log;
 
 class AuthenticationService
 {
@@ -80,7 +77,7 @@ class AuthenticationService
 
         return [
             // 'user' => new UserResource($user->load('profile', 'preferences')),
-            'user' => new UserResource($user->load('profile')),
+            'user' => new UserResource($user),
             'access_token' => $accessToken->plainTextToken,
             'refresh_token' => $refreshToken,
             'token_type' => 'Bearer',

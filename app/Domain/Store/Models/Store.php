@@ -2,14 +2,13 @@
 
 namespace App\Domain\Store\Models;
 
-use App\Domain\User\Models\StoreFollowers;
-use App\Domain\User\Models\StoreHours;
+use App\Domain\Store\Models\StoreFollowers;
+use App\Domain\Store\Models\StoreHours;
 use App\Domain\User\Models\User;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
-use Str;
 
 class Store extends Model
 {
@@ -163,6 +162,7 @@ class Store extends Model
     {
         return $this->hasMany(StoreHours::class, 'store_id');
     }
+
 
     public function followers()
     {
