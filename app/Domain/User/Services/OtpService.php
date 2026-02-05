@@ -7,7 +7,6 @@ use App\Domain\User\Models\Otp;
 use App\Domain\User\Models\User;
 use App\Domain\User\Events\OtpGenerated;
 use App\Domain\Notification\Services\NotificationService;
-use Illuminate\Support\Facades\Hash;
 
 class OtpService
 {

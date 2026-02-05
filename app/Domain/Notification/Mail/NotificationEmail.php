@@ -5,12 +5,13 @@ namespace App\Domain\Notification\Mail;
 use App\Domain\Notification\Models\Notification;
 use App\Domain\User\Models\User;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class NotificationEmail extends Mailable
+class NotificationEmail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -40,7 +41,7 @@ class NotificationEmail extends Mailable
         );
     }
 
-    private function getActionUrl(): ?string
+    public function getActionUrl(): ?string
     {
         if (!$this->notification->reference_type || !$this->notification->reference_id) {
             return null;
@@ -54,7 +55,7 @@ class NotificationEmail extends Mailable
         };
     }
 
-    private function getActionText(): string
+    public function getActionText(): string
     {
         return match ($this->notification->type) {
             'order_confirmation' => 'View Order',

@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->bigIncrements('id');
 
             // Relation
-            $table->char('user_id', 36);
+            $table->uuid('user_id');
 
             // Notification content
             $table->string('type');

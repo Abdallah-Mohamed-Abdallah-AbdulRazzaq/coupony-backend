@@ -3,6 +3,7 @@
 namespace App\Domain\User\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Domain\Store\Models\StoreFollowers;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -161,5 +162,15 @@ class User extends Authenticatable
     public function stores()
     {
         return $this->hasMany(\App\Domain\Store\Models\Store::class, 'owner_user_id');
+    }
+
+    public function userRoles()
+    {
+        return $this->hasMany(UserRoles::class);
+    }
+
+    public function storeFollowers()
+    {
+        return $this->hasMany(StoreFollowers::class, 'user_id');
     }
 }

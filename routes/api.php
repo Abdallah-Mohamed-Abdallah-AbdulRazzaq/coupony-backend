@@ -4,8 +4,13 @@ use App\Application\Http\Controllers\API\V1\Auth\LoginController;
 use App\Application\Http\Controllers\Api\V1\Auth\OtpController;
 use App\Application\Http\Controllers\API\V1\Auth\RefreshTokenController;
 use App\Application\Http\Controllers\API\V1\Auth\RegisterController;
+use App\Application\Http\Controllers\API\V1\ContactUsController;
 use App\Application\Http\Controllers\Api\V1\NotificationController;
 use App\Application\Http\Controllers\Api\V1\StoreController;
+use App\Domain\Notification\Models\Notification;
+use App\Domain\User\Models\User;
+use App\Application\Http\Controllers\Api\V1\NotifyMeController;
+use App\Http\Middleware\ContactUsThrottle;
 use App\Http\Middleware\SellerRoleCheck;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -53,4 +58,27 @@ Route::prefix('v1')->group(function () {
     Route::middleware(['auth:sanctum'])->group(function () {
         Route::post('/store/create', [StoreController::class, 'create'])->name('store.create');
     });
+
+    //Test
+    Route::get('/test-mail', function () {
+        Mail::to('lofylofy56@gmail.com')->send(
+            new \App\Domain\Notification\Mail\NotificationEmail(
+                Notification::first(),
+                User::first()
+            )
+        );
+
+        return 'sent';
+    });
+
+    Route::get('/mail-check', function () {
+        return config('mail.from.address');
+    });
+
+    //Web Contact Us
+    Route::post('/contact-us/seller', [ContactUsController::class, 'submit_seller'])->name('contactUs.seller')->middleware([ContactUsThrottle::class]);
+    Route::post('/contact-us/customer', [ContactUsController::class, 'submit_customer'])->name('contactUs.customer')->middleware([ContactUsThrottle::class]);
+
+    Route::post('/notify-me/submit', [NotifyMeController::class, 'submit'])->name('notifyMe.submit')->middleware([ContactUsThrottle::class]);
+    Route::post('/notify-me/notify-all', [NotifyMeController::class, 'notifyAll'])->name('notifyMe.notifyAll');
 });

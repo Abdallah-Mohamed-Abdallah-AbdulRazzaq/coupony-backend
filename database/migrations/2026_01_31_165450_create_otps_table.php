@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->bigIncrements('id');
 
             // Relation (nullable for pre-login OTPs)
-            $table->char('user_id', 36)->nullable();
+            $table->uuid('user_id')->nullable();
 
             // OTP data
             $table->string('phone_or_email');

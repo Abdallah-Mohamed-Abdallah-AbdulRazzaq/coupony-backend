@@ -2,12 +2,14 @@
 
 namespace App\Domain\Store\Models;
 
+use App\Domain\Store\Models\StoreFollowers;
+use App\Domain\Store\Models\StoreHours;
 use App\Domain\User\Models\User;
+use App\Domain\User\Models\UserRoles;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Notifications\Notifiable;
-use Str;
 
 class Store extends Model
 {
@@ -116,5 +118,47 @@ class Store extends Model
             ->whereHas('roles', function ($query) {
                 $query->whereIn('name', ['store_manager', 'store_staff']);
             });
+    }
+
+    public function managers(): BelongsToMany
+    {
+        return $this->users()
+            ->whereHas('roles', function ($query) {
+                $query->where('name', 'store_manager');
+            });
+    }
+
+    // public function staffs(): BelongsToMany
+    // {
+    //     return $this->users()
+    //         ->whereHas('roles', function ($query) {
+    //             $query->where('name', 'store_staff');
+    //         });
+    // }
+
+
+
+    /**
+     * Get free plan ID.
+     */
+    // private function getFreePlanId(): int
+    // {
+    //     return \Domain\Subscription\Models\SubscriptionPlan::where('slug', 'free')->first()->id;
+    // }
+
+    public function hours()
+    {
+        return $this->hasMany(StoreHours::class, 'store_id');
+    }
+
+
+    public function followers()
+    {
+        return $this->hasMany(StoreFollowers::class, 'store_id');
+    }
+
+    public function userRoles()
+    {
+        return $this->hasMany(UserRoles::class, 'store_id');
     }
 }
