@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Http\Controllers\Api\V1;
+namespace App\Application\Http\Controllers\API\V1;
 
 use App\Application\Http\Controllers\Controller;
 use App\Application\Http\Resources\NotificationResource;

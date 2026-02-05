@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->bigIncrements('id');
 
             // Relation
-            $table->char('user_id', 36)->unique();
+            $table->uuid('user_id')->unique();
 
             // Profile data
             $table->string('first_name', 100)->nullable();

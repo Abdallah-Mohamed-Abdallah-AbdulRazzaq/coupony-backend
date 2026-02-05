@@ -17,7 +17,7 @@ return new class extends Migration {
                 ->default(DB::raw('(UUID())'));
 
             // Owner
-            $table->char('owner_user_id', 36);
+            $table->uuid('owner_user_id');
 
             // Store info
             $table->string('name');

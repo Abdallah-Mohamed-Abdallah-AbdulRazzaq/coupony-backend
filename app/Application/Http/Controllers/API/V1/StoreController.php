@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Http\Controllers\Api\V1;
+namespace App\Application\Http\Controllers\API\V1;
 
 use App\Application\Http\Controllers\Controller;
 use App\Application\Http\Requests\createStoreRequest;
@@ -22,13 +22,15 @@ class StoreController extends Controller
     }
     public function create(createStoreRequest $request): JsonResponse
     {
+        $user = $request->user();
         try {
             $store = $this->createStore->execute(
+                $user,
                 StoreData::fromRequest($request)
             );
 
             return response()->json([
-                'message' => 'Store created successfully',
+                'message' => 'Store created successfully. Pending approval.',
                 'data' => [
                     'store' => $store->load('verifications'),
                 ],

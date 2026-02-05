@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Application\Http\Controllers\Api\V1\Auth;
+namespace App\Application\Http\Controllers\API\V1\Auth;
 
 use App\Application\Http\Controllers\Controller;
 use App\Domain\User\Enums\OtpChannels;

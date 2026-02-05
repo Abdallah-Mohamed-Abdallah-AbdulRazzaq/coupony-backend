@@ -7,6 +7,7 @@ use App\Domain\Store\Events\StoreCreated;
 use App\Domain\Store\Models\Store;
 use App\Domain\Store\Enums\StoreStatus;
 use App\Domain\Store\Repositories\StoreRepository;
+use App\Domain\User\Models\User;
 use DB;
 
 class CreateStore
@@ -20,7 +21,7 @@ class CreateStore
 
     }
 
-    public function execute(StoreData $data): Store
+    public function execute(User $owner, StoreData $data): Store
     {
         return DB::transaction(function () use ($data) {
             $store = $this->stores->create([
@@ -50,6 +51,14 @@ class CreateStore
                     ]);
                 }
             }
+
+            $store->userRoles()->create([
+                'user_id' => $data->ownerUserId,
+                'role' => 'owner',
+                'store_id' => $store->id,
+            ]);
+
+            $store->createDefaultStoreHours($store);
 
             event(new StoreCreated($store));
             return $store;

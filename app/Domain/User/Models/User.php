@@ -162,4 +162,14 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Domain\Store\Models\Store::class, 'owner_user_id');
     }
+
+    public function userRoles()
+    {
+        return $this->hasMany(UserRoles::class);
+    }
+
+    public function storeFollowers()
+    {
+        return $this->hasMany(StoreFollowers::class, 'user_id');
+    }
 }
