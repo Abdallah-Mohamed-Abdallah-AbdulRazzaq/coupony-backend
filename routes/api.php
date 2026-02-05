@@ -81,4 +81,5 @@ Route::prefix('v1')->group(function () {
 
     Route::post('/notify-me/submit', [NotifyMeController::class, 'submit'])->name('notifyMe.submit')->middleware([ContactUsThrottle::class]);
     Route::post('/notify-me/notify-all', [NotifyMeController::class, 'notifyAll'])->name('notifyMe.notifyAll');
+    //test
 });
