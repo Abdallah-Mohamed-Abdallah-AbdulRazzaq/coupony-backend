@@ -1,0 +1,1508 @@
+{
+  "name": "coupony-backend",
+  "path": "e:\\Work and Projects\\Coupon\\Software\\Coupony_Back-end\\coupony-backend",
+  "type": "directory",
+  "children": [
+    {
+      "name": ".github",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": "workflows",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "issues.yml",
+              "type": "file",
+              "icon": "⚙️"
+            },
+            {
+              "name": "pull-requests.yml",
+              "type": "file",
+              "icon": "⚙️"
+            },
+            {
+              "name": "tests.yml",
+              "type": "file",
+              "icon": "⚙️"
+            },
+            {
+              "name": "update-changelog.yml",
+              "type": "file",
+              "icon": "⚙️"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "app",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": "Application",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "Console",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": "Commands",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "CleanupExpiredOtps.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "CleanupUserSessions.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Http",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": "Controllers",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "API",
+                      "type": "folder",
+                      "icon": "📁",
+                      "children": [
+                        {
+                          "name": "V1",
+                          "type": "folder",
+                          "icon": "📁",
+                          "children": [
+                            {
+                              "name": "Auth",
+                              "type": "folder",
+                              "icon": "📁",
+                              "children": [
+                                {
+                                  "name": "LoginController.php",
+                                  "type": "file",
+                                  "icon": "📄"
+                                },
+                                {
+                                  "name": "OtpController.php",
+                                  "type": "file",
+                                  "icon": "📄"
+                                },
+                                {
+                                  "name": "RefreshTokenController.php",
+                                  "type": "file",
+                                  "icon": "📄"
+                                },
+                                {
+                                  "name": "RegisterController.php",
+                                  "type": "file",
+                                  "icon": "📄"
+                                }
+                              ]
+                            },
+                            {
+                              "name": "NotificationController.php",
+                              "type": "file",
+                              "icon": "📄"
+                            },
+                            {
+                              "name": "StoreController.php",
+                              "type": "file",
+                              "icon": "📄"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "name": "Controller.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Requests",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "createStoreRequest.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "loginUserRequest.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "registerUserRequest.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Resources",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "NotificationResource.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "UserResource.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Domain",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "Notification",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": "Contracts",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "NotifierInterface.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Enums",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "NotificationChannels.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "NotificationStatus.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "NotificationTypes.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Mail",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "NotificationEmail.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Models",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "Notification.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Notifiers",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "EmailNotifier.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "InAppNotifier.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "PushNotifier.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "SmsNotifier.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Services",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "NotificationService.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "events",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "NotificationSent.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "Store",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": "Actions",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "CreateStore.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "DTOs",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "StoreData.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Enums",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "StoreStatus.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Events",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "StoreCreated.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "StoreStatusChanged.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "StoreVerified.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Models",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "Store.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "StoreVerification.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Repositories",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "StoreRepository.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "StoreRepositoryInterface.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Services",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "StoreService.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "StoreVerificationService.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "name": "User",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": "Actions",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "RegisterUser.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "DTOs",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "UserData.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Enums",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "OtpChannels.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "OtpPurposes.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "OtpStatus.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "UserStatus.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Events",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "OtpGenerated.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "UserLoggedIn.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "UserLoggedOut.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "UserRegistered.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Listeners",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "SendWelcomeEmail.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Models",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "Otp.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "Profile.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "Session.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "User.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "UserPoints.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Repositories",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "UserRepository.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "UserRepositoryInterface.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "Services",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "AuthenticationService.php",
+                      "type": "file",
+                      "icon": "📄"
+                    },
+                    {
+                      "name": "OtpService.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Http",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "Middleware",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": "CheckStoreAccess.php",
+                  "type": "file",
+                  "icon": "📄"
+                },
+                {
+                  "name": "EnsureTokenIsValid.php",
+                  "type": "file",
+                  "icon": "📄"
+                },
+                {
+                  "name": "PerformanceMonitoring.php",
+                  "type": "file",
+                  "icon": "📄"
+                },
+                {
+                  "name": "SellerRoleCheck.php",
+                  "type": "file",
+                  "icon": "📄"
+                },
+                {
+                  "name": "UpdateUserSession.php",
+                  "type": "file",
+                  "icon": "📄"
+                },
+                {
+                  "name": "isVerifiedCheck.php",
+                  "type": "file",
+                  "icon": "📄"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Mail",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "WelcomeEmail.php",
+              "type": "file",
+              "icon": "📄"
+            }
+          ]
+        },
+        {
+          "name": "Models",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "User.php",
+              "type": "file",
+              "icon": "📄"
+            }
+          ]
+        },
+        {
+          "name": "Providers",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "AppServiceProvider.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "EventServiceProvider.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "TelescopeServiceProvider.php",
+              "type": "file",
+              "icon": "📄"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "bootstrap",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": "app.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "providers.php",
+          "type": "file",
+          "icon": "📄"
+        }
+      ]
+    },
+    {
+      "name": "config",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": "app.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "auth.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "broadcasting.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "cache.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "database.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "filesystems.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "logging.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "mail.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "otp.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "permission.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "queue.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "reverb.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "sanctum.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "services.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "session.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "telescope.php",
+          "type": "file",
+          "icon": "📄"
+        }
+      ]
+    },
+    {
+      "name": "database",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": "factories",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "UserFactory.php",
+              "type": "file",
+              "icon": "📄"
+            }
+          ]
+        },
+        {
+          "name": "migrations",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "0001_01_01_000000_create_users_table.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "0001_01_01_000001_create_cache_table.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "0001_01_01_000002_create_jobs_table.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "2026_01_30_154542_create_personal_access_tokens_table.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "2026_01_30_203946_create_telescope_entries_table.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "2026_01_30_205540_create_permission_tables.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "2026_01_31_165326_create_notifications_table.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "2026_01_31_165450_create_otps_table.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "2026_01_31_165521_create_profiles_table.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "2026_01_31_215426_create_stores_table.php",
+              "type": "file",
+              "icon": "📄"
+            }
+          ]
+        },
+        {
+          "name": "seeders",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "DatabaseSeeder.php",
+              "type": "file",
+              "icon": "📄"
+            },
+            {
+              "name": "RolesAndPermissionsSeeder.php",
+              "type": "file",
+              "icon": "📄"
+            }
+          ]
+        },
+        {
+          "name": ".gitignore",
+          "type": "file",
+          "icon": "📁"
+        }
+      ]
+    },
+    {
+      "name": "public",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": ".htaccess",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "favicon.ico",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "index.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "robots.txt",
+          "type": "file",
+          "icon": "📄"
+        }
+      ]
+    },
+    {
+      "name": "resources",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": "css",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "app.css",
+              "type": "file",
+              "icon": "🎨"
+            }
+          ]
+        },
+        {
+          "name": "js",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "app.js",
+              "type": "file",
+              "icon": "📜"
+            },
+            {
+              "name": "bootstrap.js",
+              "type": "file",
+              "icon": "📜"
+            },
+            {
+              "name": "echo.js",
+              "type": "file",
+              "icon": "📜"
+            }
+          ]
+        },
+        {
+          "name": "views",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "emails",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": "notification.blade.php",
+                  "type": "file",
+                  "icon": "📄"
+                }
+              ]
+            },
+            {
+              "name": "mails",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": "user",
+                  "type": "folder",
+                  "icon": "📁",
+                  "children": [
+                    {
+                      "name": "WelcomeMail.blade.php",
+                      "type": "file",
+                      "icon": "📄"
+                    }
+                  ]
+                },
+                {
+                  "name": "notification.blade.php",
+                  "type": "file",
+                  "icon": "📄"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "routes",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": "api.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "channels.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "console.php",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "web.php",
+          "type": "file",
+          "icon": "📄"
+        }
+      ]
+    },
+    {
+      "name": "storage",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": "app",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "private",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": ".gitignore",
+                  "type": "file",
+                  "icon": "📁"
+                }
+              ]
+            },
+            {
+              "name": "public",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": ".gitignore",
+                  "type": "file",
+                  "icon": "📁"
+                }
+              ]
+            },
+            {
+              "name": ".gitignore",
+              "type": "file",
+              "icon": "📁"
+            }
+          ]
+        },
+        {
+          "name": "framework",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "sessions",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": ".gitignore",
+                  "type": "file",
+                  "icon": "📁"
+                }
+              ]
+            },
+            {
+              "name": "testing",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": ".gitignore",
+                  "type": "file",
+                  "icon": "📁"
+                }
+              ]
+            },
+            {
+              "name": "views",
+              "type": "folder",
+              "icon": "📁",
+              "children": [
+                {
+                  "name": ".gitignore",
+                  "type": "file",
+                  "icon": "📁"
+                }
+              ]
+            },
+            {
+              "name": ".gitignore",
+              "type": "file",
+              "icon": "📁"
+            }
+          ]
+        },
+        {
+          "name": "logs",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": ".gitignore",
+              "type": "file",
+              "icon": "📁"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "stubs",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": "cast.inbound.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "cast.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "class.invokable.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "class.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "console.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.api.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.invokable.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.model.api.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.model.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.nested.api.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.nested.singleton.api.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.nested.singleton.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.nested.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.plain.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.singleton.api.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.singleton.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "controller.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "enum.backed.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "enum.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "event.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "factory.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "job.queued.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "job.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "listener.queued.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "listener.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "listener.typed.queued.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "listener.typed.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "mail.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "markdown-mail.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "markdown-notification.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "middleware.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "migration.create.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "migration.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "migration.update.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "model.pivot.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "model.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "notification.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "observer.plain.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "observer.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "pest.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "pest.unit.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "policy.plain.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "policy.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "provider.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "request.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "resource-collection.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "resource.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "rule.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "scope.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "seeder.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "test.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "test.unit.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "trait.stub",
+          "type": "file",
+          "icon": "📄"
+        },
+        {
+          "name": "view-component.stub",
+          "type": "file",
+          "icon": "📄"
+        }
+      ]
+    },
+    {
+      "name": "tests",
+      "type": "folder",
+      "icon": "📁",
+      "children": [
+        {
+          "name": "Feature",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "ExampleTest.php",
+              "type": "file",
+              "icon": "📄"
+            }
+          ]
+        },
+        {
+          "name": "Unit",
+          "type": "folder",
+          "icon": "📁",
+          "children": [
+            {
+              "name": "ExampleTest.php",
+              "type": "file",
+              "icon": "📄"
+            }
+          ]
+        },
+        {
+          "name": "TestCase.php",
+          "type": "file",
+          "icon": "📄"
+        }
+      ]
+    },
+    {
+      "name": ".editorconfig",
+      "type": "file",
+      "icon": "📄"
+    },
+    {
+      "name": ".env.example",
+      "type": "file",
+      "icon": "📄"
+    },
+    {
+      "name": ".gitattributes",
+      "type": "file",
+      "icon": "📁"
+    },
+    {
+      "name": ".gitignore",
+      "type": "file",
+      "icon": "📁"
+    },
+    {
+      "name": ".styleci.yml",
+      "type": "file",
+      "icon": "⚙️"
+    },
+    {
+      "name": "CHANGELOG.md",
+      "type": "file",
+      "icon": "📝"
+    },
+    {
+      "name": "README.md",
+      "type": "file",
+      "icon": "📝"
+    },
+    {
+      "name": "artisan",
+      "type": "file",
+      "icon": "📄"
+    },
+    {
+      "name": "composer.json",
+      "type": "file",
+      "icon": "⚙️"
+    },
+    {
+      "name": "package-lock.json",
+      "type": "file",
+      "icon": "⚙️"
+    },
+    {
+      "name": "package.json",
+      "type": "file",
+      "icon": "📦"
+    },
+    {
+      "name": "phpunit.xml",
+      "type": "file",
+      "icon": "📄"
+    },
+    {
+      "name": "vite.config.js",
+      "type": "file",
+      "icon": "📜"
+    }
+  ],
+  "metadata": {
+    "generated": "2026-02-05T06:18:59.456Z",
+    "generator": "FileTree Pro Extension",
+    "version": "0.2.0",
+    "showIcons": true,
+    "maxDepth": 10
+  }
+}
