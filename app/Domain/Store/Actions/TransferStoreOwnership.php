@@ -37,12 +37,12 @@ class TransferStoreOwnership
                 ]
             );
 
-            // Convert previous owner to staff (optional)
-            $currentOwner->userRoles()
-                ->where('store_id', $store->id)
-                ->update([
-                    'role_id' => Role::where('name', 'store_manager')->first()->id,
-                ]);
+            // // Convert previous owner to staff (optional)
+            // $currentOwner->userRoles()
+            //     ->where('store_id', $store->id)
+            //     ->update([
+            //         'role_id' => Role::where('name', 'store_manager')->first()->id,
+            //     ]);
 
             // Dispatch event
             event(new StoreOwnershipTransferred($store, $newOwner, $currentOwner));
