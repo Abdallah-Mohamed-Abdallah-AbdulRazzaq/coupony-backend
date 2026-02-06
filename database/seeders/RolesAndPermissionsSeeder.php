@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Domain\User\Enums\UserStatus;
 use App\Domain\User\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -69,10 +70,14 @@ class RolesAndPermissionsSeeder extends Seeder
             'order:update',
         ]);
 
-        User::create([
-            'email' => 'admin@example.com',
+        $admin = User::create([
+            'email' => 'super.admin@coupony.shop',
             'password_hash' => bcrypt('password'),
+            'status' => UserStatus::ACTIVE,
+            'email_verified_at' => now(),
+            'phone_verified_at' => now(),
         ])->assignRole($admin);
 
+        $admin->profile()->create(['first_name' => 'Coupony', 'last_name' => 'App']);
     }
 }

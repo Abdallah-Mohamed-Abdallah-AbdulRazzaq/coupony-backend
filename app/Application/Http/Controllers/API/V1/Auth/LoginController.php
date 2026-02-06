@@ -37,7 +37,7 @@ class LoginController extends Controller
                     'message' => 'Login successful',
                     'data' => [
                         'user' => new UserResource($result['user']->load('stores')),
-                        'role' => 'seller',
+                        'role' => $role,
                         'is_store_owner' => $is_store_owner,
                         'next' => $is_store_owner ? null : [
                             'url' => route('store.create'),   // API endpoint to call
@@ -72,7 +72,7 @@ class LoginController extends Controller
                 'message' => 'Login successful',
                 'data' => [
                     'user' => new UserResource($result['user']),
-                    'role' => 'customer',
+                    'role' => $role,
                     'access_token' => $result['access_token'],
                     'refresh_token' => $result['refresh_token'],
                     'token_type' => $result['token_type'],
@@ -104,7 +104,6 @@ class LoginController extends Controller
 
     public function me(Request $request): JsonResponse
     {
-        // $user = $request->user()->load(['profile', 'preferences', 'points']);
         $user = $request->user();
 
         return response()->json([

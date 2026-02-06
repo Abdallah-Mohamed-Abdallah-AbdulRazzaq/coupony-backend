@@ -2,12 +2,37 @@
 
 namespace App\Application\Http\Controllers\API\V1;
 
+use App\Application\Http\Controllers\Controller;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 use Illuminate\Support\Facades\RateLimiter;
 
-class ContactUsController
+class ContactUsController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            // examples with aliases, pipe-separated names, guards, etc:
+            new Middleware(\Spatie\Permission\Middleware\RoleMiddleware::using('admin'), except: ['submit_customer', 'submit_seller']),
+            new Middleware('auth:sanctum', except: ['submit_customer', 'submit_seller']),
+        ];
+    }
+    public function index_customer()
+    {
+        $customers = DB::table('contact_us_customer')->get();
+        return response()->json([
+            'data' => $customers
+        ]);
+    }
+    public function index_seller()
+    {
+        $seller = DB::table('contact_us_seller')->get();
+        return response()->json([
+            'data' => $seller
+        ]);
+    }
     public function submit_customer(Request $request)
     {
         $ip = $request->ip();

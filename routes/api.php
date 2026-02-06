@@ -1,19 +1,24 @@
 <?php
 
+use App\Application\Http\Controllers\API\V1\Auth\AdminRegisterController;
 use App\Application\Http\Controllers\API\V1\Auth\LoginController;
-use App\Application\Http\Controllers\Api\V1\Auth\OtpController;
+use App\Application\Http\Controllers\API\V1\Auth\OtpController;
 use App\Application\Http\Controllers\API\V1\Auth\RefreshTokenController;
 use App\Application\Http\Controllers\API\V1\Auth\RegisterController;
 use App\Application\Http\Controllers\API\V1\ContactUsController;
-use App\Application\Http\Controllers\Api\V1\NotificationController;
-use App\Application\Http\Controllers\Api\V1\StoreController;
+use App\Application\Http\Controllers\API\V1\NotificationController;
+use App\Application\Http\Controllers\API\V1\StoreController;
 use App\Domain\Notification\Models\Notification;
+use App\Domain\User\Enums\BudgetCategory;
+use App\Domain\User\Enums\InterestingOfferCategory;
+use App\Domain\User\Enums\ShoppingStyleCategory;
 use App\Domain\User\Models\User;
-use App\Application\Http\Controllers\Api\V1\NotifyMeController;
+use App\Application\Http\Controllers\API\V1\NotifyMeController;
 use App\Http\Middleware\ContactUsThrottle;
 use App\Http\Middleware\SellerRoleCheck;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Validation\Rule;
 
 Route::prefix('v1')->group(function () {
 
@@ -26,6 +31,10 @@ Route::prefix('v1')->group(function () {
         Route::post('/auth/logout', [LoginController::class, 'logout']);
         Route::get('/auth/me', [LoginController::class, 'me']);
     });
+
+    // Register Admin
+    Route::post('/admin/register', AdminRegisterController::class);
+
 
     // Notifications
     // Route::get('/notifications', [NotificationController::class, 'index']);
@@ -80,6 +89,87 @@ Route::prefix('v1')->group(function () {
     Route::post('/contact-us/customer', [ContactUsController::class, 'submit_customer'])->name('contactUs.customer')->middleware([ContactUsThrottle::class]);
 
     Route::post('/notify-me/submit', [NotifyMeController::class, 'submit'])->name('notifyMe.submit')->middleware([ContactUsThrottle::class]);
-    Route::post('/notify-me/notify-all', [NotifyMeController::class, 'notifyAll'])->name('notifyMe.notifyAll');
-    //test
+    Route::get('/admin/notify-me/list', [NotifyMeController::class, 'list'])->name('notifyMe.list');
+    Route::post('/admin/notify-me/notify-all', [NotifyMeController::class, 'notifyAll'])->name('notifyMe.notifyAll');
+
+    Route::get('/admin/contact-us/customers', [ContactUsController::class, 'index_customer'])->name('contactUs.get.customers');
+    Route::get('/admin/contact-us/sellers', [ContactUsController::class, 'index_seller'])->name('contactUs.get.sellers');
+
+    //On Boarding
+    Route::middleware(['auth:sanctum'])->group(function () {
+
+        Route::post('/on-boarding/customer', function (Request $request) {
+            $data = $request->validate([
+                'interesting_offers' => ['required', 'array', 'min:1'],
+                'interesting_offers.*' => [
+                    'string',
+                    Rule::in(InterestingOfferCategory::values()),
+                ],
+
+                'shopping_style' => ['required', 'array', 'min:1'],
+                'shopping_style.*' => [
+                    'string',
+                    Rule::in(ShoppingStyleCategory::values()),
+                ],
+
+                'budget' => ['required', 'string', Rule::in(BudgetCategory::values())],
+            ]);
+
+            DB::transaction(function () use ($data, $request) {
+
+                DB::table('interests')->updateOrInsert(
+                    ['user_id' => $request->user()->id],
+                    [
+                        'interesting_offers' => json_encode($data['interesting_offers']),
+                        'shopping_style' => json_encode($data['shopping_style']),
+                        'budget' => $data['budget'],
+                        'updated_at' => now(),
+                        'created_at' => now(),
+                    ]
+                );
+            });
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Onboarding completed successfully',
+            ], 200);
+        })->name('onBoarding');
+        Route::post('/on-boarding/seller', function (Request $request) {
+            $data = $request->validate([
+                'interesting_offers' => ['required', 'array', 'min:1'],
+                'interesting_offers.*' => [
+                    'string',
+                    Rule::in(InterestingOfferCategory::values()),
+                ],
+
+                'shopping_style' => ['required', 'array', 'min:1'],
+                'shopping_style.*' => [
+                    'string',
+                    Rule::in(ShoppingStyleCategory::values()),
+                ],
+
+                'budget' => ['required', 'string', Rule::in(BudgetCategory::values())],
+            ]);
+
+            DB::transaction(function () use ($data, $request) {
+
+                DB::table('interests')->updateOrInsert(
+                    ['user_id' => $request->user()->id],
+                    [
+                        'interesting_offers' => json_encode($data['interesting_offers']),
+                        'shopping_style' => json_encode($data['shopping_style']),
+                        'budget' => $data['budget'],
+                        'updated_at' => now(),
+                        'created_at' => now(),
+                    ]
+                );
+            });
+
+            return response()->json([
+                'success' => true,
+                'message' => 'Onboarding completed successfully',
+            ], 200);
+        })->name('onBoarding');
+
+    });
 });

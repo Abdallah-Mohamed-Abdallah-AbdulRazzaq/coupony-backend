@@ -10,6 +10,7 @@ use App\Domain\User\Repositories\UserRepository;
 use App\Domain\User\Events\UserRegistered;
 use DB;
 use Illuminate\Contracts\Hashing\Hasher;
+use Spatie\Permission\Models\Role;
 
 class RegisterUser
 {
@@ -42,19 +43,34 @@ class RegisterUser
                     // 'avatar_url' => $data->avatarUrl,
                 ]);
             }
-            if ($data->role === 'seller')
-                $user->assignRole('seller');
-            $user->assignRole('customer');
+            $this->assignUserRole($user, $data->role);
 
-            UserRoles::create([
-                'user_id' => $user->id,
-                'role_id' => $user->roles()->where('name', $data->role)->first()->id,
-            ]);
+
 
             // $user->points->create(["points" => 0]);
 
             event(new UserRegistered($user, $context));
             return $user;
         });
+    }
+
+    private function assignUserRole(User $user, string $role)
+    {
+        $roleModel = Role::where('name', $role)->firstOrFail();
+        $user->assignRole($roleModel);
+
+        UserRoles::create([
+            'user_id' => $user->id,
+            'role_id' => $user->roles()->where('name', $role)->first()->id,
+            'granted_by_user_id' => $user->id
+        ]);
+
+        if ($role === 'admin') {
+            $user->forceFill([
+                'status' => UserStatus::ACTIVE,
+                'email_verified_at' => now(),
+                'phone_verified_at' => now(),
+            ])->save();
+        }
     }
 }
