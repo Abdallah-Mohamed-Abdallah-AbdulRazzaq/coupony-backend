@@ -2,12 +2,24 @@
 
 namespace App\Application\Http\Controllers\API\V1;
 
+use App\Application\Http\Controllers\Controller;
 use App\Domain\Notification\Services\NotificationService;
 use DB;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
 
-class NotifyMeController
+class NotifyMeController extends Controller implements HasMiddleware
 {
+    public static function middleware(): array
+    {
+        return [
+            // examples with aliases, pipe-separated names, guards, etc:
+            new Middleware(\Spatie\Permission\Middleware\RoleMiddleware::using('admin'), except: ['submit']),
+            new Middleware('auth:sanctum', except: ['submit']),
+        ];
+    }
+
     public function __construct(
         private NotificationService $notificationService
     ) {
@@ -28,7 +40,11 @@ class NotifyMeController
 
     public function list()
     {
-        return DB::table('notify_me')->get();
+        $data = DB::table('notify_me')->get();
+
+        return response()->json([
+            'data' => $data
+        ]);
     }
 
     public function delete($id)

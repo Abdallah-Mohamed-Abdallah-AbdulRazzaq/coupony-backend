@@ -1,0 +1,49 @@
+<?php
+
+namespace App\Application\Http\Controllers\API\V1\Auth;
+
+use App\Application\Http\Controllers\Controller;
+use App\Application\Http\Requests\registerUserRequest;
+use App\Domain\User\Actions\RegisterUser;
+use App\Domain\User\DTOs\UserData;
+use App\Domain\User\Enums\OtpChannels;
+use App\Domain\User\Enums\OtpPurposes;
+use App\Domain\User\Services\AuthenticationService;
+use App\Domain\User\Services\OtpService;
+use Illuminate\Routing\Controllers\HasMiddleware;
+use Illuminate\Routing\Controllers\Middleware;
+
+class AdminRegisterController extends Controller implements HasMiddleware
+{
+    public function __construct(
+        private RegisterUser $registerUser,
+    ) {
+    }
+
+    public static function middleware(): array
+    {
+        return [
+            // examples with aliases, pipe-separated names, guards, etc:
+            new Middleware(\Spatie\Permission\Middleware\RoleMiddleware::using('admin')),
+            new Middleware('auth:sanctum'),
+            new Middleware('throttle:5,1'),
+        ];
+    }
+
+    public function __invoke(registerUserRequest $request)
+    {
+        $context = [
+            'ip_address' => $request->ip(),
+            'user_agent' => $request->userAgent(),
+            'device_name' => $request->input('device_name'),
+        ];
+        $user = $this->registerUser->excute(
+            UserData::fromRequest($request),
+            context: $context
+        );
+        return response()->json([
+            'success' => true,
+            'message' => 'Admin Registered successfully',
+        ], 200);
+    }
+}
